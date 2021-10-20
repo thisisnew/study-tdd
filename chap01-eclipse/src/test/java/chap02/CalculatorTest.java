@@ -1,4 +1,4 @@
-package chap02;
+package test.java.chap02;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
