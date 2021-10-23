@@ -6,18 +6,7 @@ public class PasswordStrengthMeter {
 			return PasswordStrength.INVALID;
 		}
 		
-		int metCounts = 0;
-		if(s.length() >= 8) {
-			metCounts++;
-		}
-		
-		if(meetsContainingNumberCriteria(s)) {
-			metCounts++;
-		}
-		
-		if(meetsContainingUpperCriteria(s)) {
-			metCounts++;
-		}
+		int metCounts = getMetCriteriaCounts(s);
 		
 		if(metCounts <= 1) {
 			return PasswordStrength.WEAK;
@@ -49,4 +38,23 @@ public class PasswordStrengthMeter {
 		
 		return false;
 	}
+	
+	private int getMetCriteriaCounts(String s) {
+		int metCounts = 0;
+		
+		if(s.length() >= 8) {
+			metCounts++;
+		}
+		
+		if(meetsContainingNumberCriteria(s)) {
+			metCounts++;
+		}
+		
+		if(meetsContainingUpperCriteria(s)) {
+			metCounts++;
+		}
+		
+		return metCounts;
+	}
+	
 }
