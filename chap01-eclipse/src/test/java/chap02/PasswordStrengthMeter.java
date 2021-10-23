@@ -2,35 +2,27 @@ package test.java.chap02;
 
 public class PasswordStrengthMeter {
 	public PasswordStrength meter(String s) {
-		if(s == null) {
+		if(s == null || s.isBlank()) {
 			return PasswordStrength.INVALID;
 		}
 		
-		boolean lengthEnough = s.length() >= 8;
+		int metCounts = 0;
+		if(s.length() >= 8) {
+			metCounts++;
+		}
 		
+		if(meetsContainingNumberCriteria(s)) {
+			metCounts++;
+		}
 		
-//		if (s.length() < 8) {
-//			return PasswordStrength.NORMAL;
-//		}
-		boolean containsNum = meetsContainingNumberCriteria(s);
-		boolean containsUpp= meetsContainingUpperCriteria(s);
+		if(meetsContainingUpperCriteria(s)) {
+			metCounts++;
+		}
 		
-		if(lengthEnough && !containsNum && !containsUpp) {
+		if(metCounts == 1) {
 			return PasswordStrength.WEAK;
 		}
-		if(!lengthEnough && containsNum && !containsUpp) {
-			return PasswordStrength.WEAK;
-		}
-		if(!lengthEnough && !containsNum && containsUpp) {
-			return PasswordStrength.WEAK;
-		}
-		if(!lengthEnough) {
-			return PasswordStrength.NORMAL;
-		}
-		if(!containsNum) {
-			return PasswordStrength.NORMAL;
-		}
-		if(!containsUpp) {
+		if(metCounts == 2) {
 			return PasswordStrength.NORMAL;
 		}
 		
