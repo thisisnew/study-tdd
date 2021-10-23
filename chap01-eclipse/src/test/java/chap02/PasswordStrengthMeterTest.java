@@ -27,4 +27,9 @@ public class PasswordStrengthMeterTest {
 	void meetsOtherCriteria_except_for_number_Then_Normal() {
 		assertStrengh("ab!@ABqwer", PasswordStrength.NORMAL);
 	}
+	
+	@Test
+	void nullInput_Then_Invalid() {
+		assertStrengh(null, PasswordStrength.INVALID);
+	}
 }
