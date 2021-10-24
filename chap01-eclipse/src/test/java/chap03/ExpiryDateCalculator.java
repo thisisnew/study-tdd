@@ -1,5 +1,9 @@
 package test.java.chap03;
 
-public class ExpiryDateCalculator {
+import java.time.LocalDate;
 
+public class ExpiryDateCalculator {
+	public LocalDate calculateExpiryDate(LocalDate billingDate, int payAmount) {
+		return LocalDate.of(2019, 4, 1);
+	}
 }
